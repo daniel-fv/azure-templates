@@ -3,10 +3,20 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "administratorLogin": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description" : "Database administrator login name"
+            }
+
         },
         "administratorLoginPassword": {
-            "type": "securestring"
+            "type": "securestring",
+            "minLength": 8,
+            "maxLength": 128,
+            "metadata": {
+                "description": "Database administrator password"
+            }
         },
         "location": {
             "type": "string"
@@ -21,10 +31,27 @@
             "type": "string"
         },
         "skuName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "B_Gen5_1",
+            "allowedValues": [
+                "B_Gen5_1",
+                "B_Gen5_2"
+            ],
+            "metadata": {
+                "description": "Azure database for MariaDB sku name"
+            }
+
         },
         "skuSizeMB": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 51200,
+            "allowedValues": [
+                51200,
+                102400
+            ],
+            "metadata": {
+                "description" : "Azure database for MariaDB sku size"
+            }
         },
         "skuTier": {
             "type": "string"
