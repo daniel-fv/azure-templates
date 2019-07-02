@@ -68,7 +68,7 @@
         },
         "backupRetentionDays": {
             "type": "int",
-            "defaultValue": "35"
+            "defaultValue": 7
         },
         "geoRedundantBackup": {
             "type": "string",
