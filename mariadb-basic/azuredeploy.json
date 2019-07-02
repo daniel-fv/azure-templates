@@ -1,48 +1,79 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "administratorLogin": {
-            "value": "novaadmin"
+            "type": "string"
         },
         "administratorLoginPassword": {
-            "value": null
-        },
-        "serverName": {
-            "value": "dbwebnova"
+            "type": "securestring"
         },
         "location": {
-            "value": "eastus2"
+            "type": "string"
         },
-        "skuName": {
-            "value": "B_Gen5_1"
-        },
-        "skuTier": {
-            "value": "Basic"
+        "serverName": {
+            "type": "string"
         },
         "skuCapacity": {
-            "value": 1
+            "type": "int"
         },
         "skuFamily": {
-            "value": "Gen5"
+            "type": "string"
+        },
+        "skuName": {
+            "type": "string"
         },
         "skuSizeMB": {
-            "value": 51200
+            "type": "int"
+        },
+        "skuTier": {
+            "type": "string"
         },
         "version": {
-            "value": "10.3"
+            "type": "string"
         },
         "backupRetentionDays": {
-            "value": 35
+            "type": "int"
         },
         "geoRedundantBackup": {
-            "value": "Disabled"
-        },
-        "storageAutoGrow": {
-            "value": "Enabled"
+            "type": "string"
         },
         "previewFeature": {
-            "value": ""
+            "type": "string",
+            "defaultValue": ""
+        },
+        "storageAutoGrow": {
+            "type": "string",
+            "defaultValue": "Disabled"
         }
-    }
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-06-01-preview",
+            "kind": "",
+            "location": "[parameters('location')]",
+            "name": "[parameters('serverName')]",
+            "properties": {
+                "version": "[parameters('version')]",
+                "administratorLogin": "[parameters('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                "storageProfile": {
+                    "storageMB": "[parameters('skuSizeMB')]",
+                    "backupRetentionDays": "[parameters('backupRetentionDays')]",
+                    "geoRedundantBackup": "[parameters('geoRedundantBackup')]",
+                    "storageAutoGrow": "[parameters('storageAutoGrow')]"
+                },
+                "previewFeature": "[parameters('previewFeature')]"
+            },
+            "sku": {
+                "name": "[parameters('skuName')]",
+                "tier": "[parameters('skuTier')]",
+                "capacity": "[parameters('skuCapacity')]",
+                "size": "[parameters('skuSizeMB')]",
+                "family": "[parameters('skuFamily')]"
+            },
+            "type": "Microsoft.DBforMariaDB/servers"
+        }
+    ],
+    "variables": {}
 }
