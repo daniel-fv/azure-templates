@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "99f1d77a-bb2f-4150-88a7-b2fc94ad8d89"
+        },
+        "name": {
+            "value": "appcondorweb"
+        },
+        "location": {
+            "value": "East US 2"
+        },
+        "hostingEnvironment": {
+            "value": ""
+        },
+        "hostingPlanName": {
+            "value": "appwebnova-asp"
+        },
+        "serverFarmResourceGroup": {
+            "value": "webclientes-prod-rg"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "sku": {
+            "value": "Free"
+        },
+        "skuCode": {
+            "value": "F1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "linuxFxVersion": {
+            "value": "DOCKER|wordpress:latest"
+        },
+        "dockerRegistryUrl": {
+            "value": "https://index.docker.io"
+        },
+        "dockerRegistryUsername": {
+            "value": ""
+        },
+        "dockerRegistryPassword": {
+            "value": null
+        },
+        "dockerRegistryStartupCommand": {
+            "value": ""
+        }
+    }
+}
